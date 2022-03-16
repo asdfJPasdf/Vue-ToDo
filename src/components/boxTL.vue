@@ -2,12 +2,9 @@
   <div class="container p-3 my-3 border">
     <!-- Menu-->
     <h3>{{ categoryName }}</h3>
-    <div class="d-flex">
-      <input type="text" placeholder="Add Task..." class="form-control-sm" v-on:keyup.enter="submitTask" v-model="newTask" @change="handleInput"/>
-      <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
-      <br />
-    </div>
-    <!-- Add-->
+ 
+    <!-- Add Taks to List -->
+  
 
 
     <!-- List Tasks-->

@@ -7,7 +7,11 @@
     :key="category.id"
     :newTask="newTask"
   /> -->
-      
+    <div class="d-flex">
+      <input type="text" placeholder="Add Task..." class="form-control-sm" v-on:keyup.enter="submitTask" v-model="newTask" />
+      <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
+      <br />
+    </div>    
   <boxTL
   :newTask="newTask" 
   :categoryName="NameCategory" 
@@ -48,18 +52,7 @@ export default {
       this.newTask = "";
       
   },
-    submitTask: function submitTask() {
-    if(this.newTask=="") return;
-     console.log(this.newTask);
-       let new_id = this.cTasks.slice(-1)[0].id + 1;
-      this.cTasks.push({
-        id: new_id,
-        name: this.newTask,
-        
-      });
-      this.newTask = "";
-      
-  },
+
   
 }
 }

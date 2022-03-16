@@ -1,10 +1,10 @@
 <template>
   
-    <div class= "d-flex">
+     <div class= "d-flex">
         <input type="text" placeholder="Add Task List" class="form-control-sm" v-model="newCategory">
-        <button button class="btn  rounded-0" @click="createChecklist">create Checklist</button> 
+        <button button class="btn  rounded-0" @>create Checklist</button> 
         <br>
-    </div> 
+    </div>   
 </template>
 
 
