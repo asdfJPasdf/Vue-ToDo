@@ -20,6 +20,7 @@
 
 <script>
 import boxTL from "./components/boxTL.vue";
+import axios from "axios";
 /*import createTL from './components/createTL.vue'*/
 
 export default {
@@ -38,6 +39,14 @@ export default {
       newCategory: "",
 
     };
+  },
+   async created() {
+    try {
+      const res = await axios.get(`http://localhost:3000/todos`);
+      this.items = res.data;
+    } catch (error) {
+      console.log(error);
+    }
   },
   methods: {
   submitTask: function submitTask() {
