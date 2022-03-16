@@ -12,21 +12,24 @@
       <thead>
         <tr>
           <!--  <th scope="col">Done?</th> -->
+          <th scope="col">Check</th>
           <th scope="col">Task</th>
-          <th scope="col">#</th>
-          <th scope="col">#</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
+        
         <tr v-for="task in tasks" :key="task.id">
+          <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
           <!--  <td>{{task.status}}</td> -->
           <td>{{ task.name }}</td>
           <td>
-            <div class="text-center"><span class="fa fa-pen"></span>pen</div>
+            <div class="text-center"><span class="bi bi-pencil-fill"></span></div>
           </td>
           <td>
             <div class="text-center">
-              <span class="fa fa-trash"></span>trash
+              <span class="bi bi-trash-fill"></span>
             </div>
           </td>
         </tr>
@@ -63,6 +66,10 @@ export default {
     this.$emit("submitTask", this.newTask);
 
       },
+      /*removeTask(id){
+        this.$emit("remove-Task", this.id)
+
+      },*/
     handleInput () {
     this.$emit('input', this.content)
     }

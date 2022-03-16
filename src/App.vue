@@ -32,9 +32,9 @@ export default {
     return {
       newTask: "",
       NameCategory: "test",
-      cTasks: [{ id: 1, name: "hans" }],
+      cTasks: [],
       categoryName: "Hallo",
-
+      todo:"",
       categories: [],
       newCategory: "",
 
@@ -43,28 +43,47 @@ export default {
    async created() {
     try {
       const res = await axios.get(`http://localhost:3000/todos`);
-      this.items = res.data;
+      this.cTasks = res.data;
     } catch (error) {
       console.log(error);
     }
   },
   methods: {
-  submitTask: function submitTask() {
+  async submitTask() {
     if(this.newTask=="") return;
      console.log(this.newTask);
-       let new_id = this.cTasks.slice(-1)[0].id + 1;
+    let new_id = this.cTasks.slice(-1)[0].id + 1;
+    const res = await axios.post(`http://localhost:3000/todos`, {
+        id: new_id,
+        name: this.newTask,
+       
+      });
+      this.cTasks = [...this.cTasks, res.data];
+
+     /*  
       this.cTasks.push({
         id: new_id,
         name: this.newTask,
-        
-      });
-      this.newTask = "";
+        */
+     },
+     removeTask(id) {
+    axios.delete(`http://localhost:3000/todos/${id}`)
+    this.cTasks = this.cTasks.filter(cTasks => cTasks.id !== id)
+}
+      
       
   },
+   /*async addItem() {
+      const res = await axios.post(`http://localhost:3000/todos`, {
+        name: this.newTask,
+      });
+      this.cTasks = [...this.cTasks, res.data];
+      this.newTask = "";
+    },*/
 
   
 }
-}
+
 </script> 
 
 <style>
