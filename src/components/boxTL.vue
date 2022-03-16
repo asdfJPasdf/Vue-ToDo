@@ -3,7 +3,8 @@
     <!-- Menu-->
     <h3>{{ categoryName }}</h3>
     <div class="d-flex">
-      <input type="text" placeholder="Add Task..." class="form-control-sm" v-on:keyup.enter="submitTask" v-model="newTask" @change="handleInput"/>
+      
+       <input type="text"  placeholder="Add Task List"  :value="value"   v-on:input="updateValue($event.target.value)">
       <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
       <br />
     </div>
@@ -57,7 +58,13 @@ export default {
      type: String ,
      default: ""
     },
+    value:{
+      type: String
+    }
+    
   },
+
+  
 
   methods: {
     submitTask() {
@@ -66,17 +73,13 @@ export default {
     this.$emit("submitTask", this.newTask);
 
       },
-    handleInput () {
-    this.$emit('input', this.content)
-    }
+    updateValue: function (value) {
+        this.$emit('inpud', value)
+      }
   },
   
-  data: function () {
+  
 
-       return {
-      content: this.value
-    }
-  },
 
 
 

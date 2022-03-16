@@ -11,7 +11,7 @@
   <boxTL
   :newTask="newTask" 
   :categoryName="NameCategory" 
-  :tasks="cTasks" @submitTask="submitTask"/>
+  :tasks="cTasks" @submitTask="submitTask" v-model="newTask"/>
 </template>
 
 <script>
@@ -47,19 +47,9 @@ export default {
       });
       this.newTask = "";
       
+
   },
-    submitTask: function submitTask() {
-    if(this.newTask=="") return;
-     console.log(this.newTask);
-       let new_id = this.cTasks.slice(-1)[0].id + 1;
-      this.cTasks.push({
-        id: new_id,
-        name: this.newTask,
-        
-      });
-      this.newTask = "";
-      
-  },
+
   
 }
 }
