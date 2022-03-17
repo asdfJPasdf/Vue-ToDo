@@ -1,10 +1,6 @@
 <template>
   
-    <div class= "d-flex">
-        <input type="text" placeholder="Add Task List" class="form-control-sm" v-model="newCategory">
-        <button button class="btn  rounded-0" @click="createChecklist">create Checklist</button> 
-        <br>
-    </div> 
+    
 </template>
 
 
@@ -14,22 +10,20 @@ export default{
         categories:[{
             id:{
             type: Number,
-            required: false
+          
         },
         categoryName: {
             type: String,
-            required: false 
-        },
-        tasks: [{
-            id: {type: Number,required: false },
-            name: {type: String,required: false },
-            status: {type: Boolean,default: false},
-        }],
         
-        newCategory:{
+        },
+        tasks: {
+            type: Array 
+        },
+        
+        /*newCategory:{
             type: String,
             default: ""
-        },
+        },*/
         
     }],
     methods: {
