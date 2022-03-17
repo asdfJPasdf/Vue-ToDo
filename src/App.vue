@@ -1,12 +1,6 @@
 <template>
-   <createTL :newCategory="newCategory" :categories="categories" /> 
-  <boxTL v-for="tasklist in tasklists" 
-    :id="tasklist.id" 
-    :categoryName="tasklist.name" 
-    :tasks="tasklists.tasks" 
-    :key="tasklist.id"
-    
-  /> 
+  <!-- <createTL :newCategory="newCategory" :categories="categories" /> --> 
+
   <!--Add new Category-->
   <div class= "d-flex">
         <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newTL"  @keyup.enter="createTL">
@@ -14,10 +8,11 @@
         <br>
     </div> 
   <!-- BoxTL component / assign Parameters-->    
-  <boxTL
+  
+  <boxTL v-for="tasklist in tasklists"  :key="tasklist.id"
   :newTask="newTask" 
-  :categoryName="NameCategory" 
-  :tasks="cTasks" @submitTask="submitTask"  
+  :categoryName="tasklist.categoryName" 
+  :tasks="tasklist.task" @submitTask="submitTask"  
   :modelValue="newTask" 
   @update:modelValue="newTask = $event"/>
 </template>
@@ -34,11 +29,11 @@ export default {
   data() {
     return {
       newTask: "",
-      cTasks: [{ id: 1, name: "hans" }], 
-      newCategory:"",
+      cTasks: [{ id: 1, name: "herbert" }], 
+      newTL:"",
       tasklists: [{id:1, 
-                  categoryName:"Test", 
-                  tasks:[this.cTasks]}]
+                  categoryName:"hello", 
+                  tasks:[{id:1, name: "hello"}]}]
     };
   },
   methods: {
@@ -46,23 +41,28 @@ export default {
   //Save new Task in Tasks Array 
   submitTask: function submitTask() {
     if(this.newTask=="") return;
-    let new_id = this.cTasks.slice(-1)[0].id + 1;
+    let new_id = this.tasklist.task.slice(-1)[0].id + 1;
    //  console.log(this.newTask);
-      this.cTasks.push({
+     this.tasklist.task.push({
         id: new_id,
         name: this.newTask,
+       
+
       });
       this.newTask = "";
    },
    createTL: function createTL() {
-    if(this.newCategory=="") return;
-    let new_id = this.cTasks.slice(-1)[0].id + 1;
+    if(this.newTL=="") return;
+    let new_id = this.tasklists.slice(-1)[0].id + 1;
    //  console.log(this.newTask);
-      this.cTasks.push({
+      this.tasklists.push({
         id: new_id,
-        name: this.newTask,
+        categoryName: this.newTL,
+        tasks:[]
+
+        
       });
-      this.newTask = "";
+      this.newTL = "";
    },
 
   
