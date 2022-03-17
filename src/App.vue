@@ -14,7 +14,7 @@
   :categoryName="tasklist.categoryName" 
   :tasks="tasklist.task" @submitTask="submitTask"  
   :modelValue="newTask" 
-  @update:modelValue="newTask = $event"/>
+  @update:modelValue="tasklist.newTask = $event"/>
 </template>
 
 <script>
@@ -28,10 +28,11 @@ export default {
   },
   data() {
     return {
-      newTask: "",
+      //newTask: "",
       cTasks: [{ id: 1, name: "herbert" }], 
       newTL:"",
       tasklists: [{id:1, 
+                  newTask: "",
                   categoryName:"hello", 
                   tasks:[{id:1, name: "hello"}]}]
     };
@@ -40,12 +41,12 @@ export default {
 
   //Save new Task in Tasks Array 
   submitTask: function submitTask() {
-    if(this.newTask=="") return;
-    let new_id = this.tasklist.task.slice(-1)[0].id + 1;
+    if(this.tasklist.newTask=="") return;
+    let new_id = this.tasklist.tasks.slice(-1)[0].id + 1;
    //  console.log(this.newTask);
-     this.tasklist.task.push({
+     this.tasklist.tasks.push({
         id: new_id,
-        name: this.newTask,
+        name: this.tasklist.newTask,
        
 
       });
