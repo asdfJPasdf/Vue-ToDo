@@ -4,7 +4,7 @@
     <h3>{{ categoryName }}</h3>
     <div class="d-flex">
       
-       <input type="text"  placeholder="Add Task List"  :value="value"   v-on:input="updateValue($event.target.value)">
+       <input type="text"  placeholder="Add Task List"    :value="tTtext"  @input="event => tTtext = event.target.value" />
       <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
       <br />
     </div>
@@ -54,28 +54,25 @@ export default {
     tasks: {
       type: Array
       },
-    newTask: {
+    /*newTask: {
      type: String ,
      default: ""
-    },
-    value:{
-      type: String
-    }
-    
+    },*/
+    tTtext: String
   },
 
   
 
   methods: {
     submitTask() {
-   
-    console.log(this.newTask);
-    this.$emit("submitTask", this.newTask);
-
+   // console.log();
+    this.$emit("submitTask");
       },
-    updateValue: function (value) {
-        this.$emit('inpud', value)
-      }
+
+   /* updateValue(event){
+          console.log(this.updateValue);
+       this.$emit("update: updateValue", event.target.value)
+    }*/
   },
   
   

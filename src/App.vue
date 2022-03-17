@@ -11,7 +11,7 @@
   <boxTL
   :newTask="newTask" 
   :categoryName="NameCategory" 
-  :tasks="cTasks" @submitTask="submitTask" v-model="newTask"/>
+  :tasks="cTasks" @submitTask="submitTask" v-model="tTtext"/>
 </template>
 
 <script>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       newTask: "",
-      NameCategory: "test",
+      tTtext: "",
+      NameCategory: "",
       cTasks: [{ id: 1, name: "hans" }],
       categoryName: "Hallo",
 
@@ -37,8 +38,8 @@ export default {
   },
   methods: {
   submitTask: function submitTask() {
-    if(this.newTask=="") return;
-     console.log(this.newTask);
+    //if(this.newTask=="") return;
+     console.log(this.tTtext);
        let new_id = this.cTasks.slice(-1)[0].id + 1;
       this.cTasks.push({
         id: new_id,
