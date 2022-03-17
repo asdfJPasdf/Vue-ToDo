@@ -1,21 +1,19 @@
 <template>
   <div class="container p-3 my-3 border">
-    <!-- Menu-->
+    <!-- Title-->
     <h3>{{ categoryName }}</h3>
+    <!--New Task Input--> 
     <div class="d-flex">
-      
-       <input type="text"  placeholder="Add Task List"    :value="tTtext"  @input="event => tTtext = event.target.value" />
+       <input type="text"  placeholder="Add Task List"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask"/>
       <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
       <br />
     </div>
-    <!-- Add-->
 
 
     <!-- List Tasks-->
     <table class="table table-bordered mt-5">
       <thead>
         <tr>
-          <!--  <th scope="col">Done?</th> -->
           <th scope="col">Task</th>
           <th scope="col">#</th>
           <th scope="col">#</th>
@@ -23,7 +21,6 @@
       </thead>
       <tbody>
         <tr v-for="task in tasks" :key="task.id">
-          <!--  <td>{{task.status}}</td> -->
           <td>{{ task.name }}</td>
           <td>
             <div class="text-center"><span class="fa fa-pen"></span>pen</div>
@@ -54,25 +51,17 @@ export default {
     tasks: {
       type: Array
       },
-    /*newTask: {
-     type: String ,
-     default: ""
-    },*/
-    tTtext: String
+
+     'modelValue': String,
   },
 
   
 
   methods: {
+  
     submitTask() {
-   // console.log();
     this.$emit("submitTask");
       },
-
-   /* updateValue(event){
-          console.log(this.updateValue);
-       this.$emit("update: updateValue", event.target.value)
-    }*/
   },
   
   

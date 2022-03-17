@@ -7,11 +7,14 @@
     :key="category.id"
     :newTask="newTask"
   /> -->
-      
+  
+  <!-- BoxTL component / assign Parameters-->    
   <boxTL
   :newTask="newTask" 
   :categoryName="NameCategory" 
-  :tasks="cTasks" @submitTask="submitTask" v-model="tTtext"/>
+  :tasks="cTasks" @submitTask="submitTask"  
+  :modelValue="newTask" 
+  @update:modelValue="newTask = $event"/>
 </template>
 
 <script>
@@ -26,20 +29,16 @@ export default {
   data() {
     return {
       newTask: "",
-      tTtext: "",
-      NameCategory: "",
-      cTasks: [{ id: 1, name: "hans" }],
-      categoryName: "Hallo",
-
-      categories: [],
-      newCategory: "",
-
+      cTasks: [{ id: 1, name: "hans" }], 
+    
     };
   },
   methods: {
+
+  //Save new Task in Tasks Array 
   submitTask: function submitTask() {
-    //if(this.newTask=="") return;
-     console.log(this.tTtext);
+    if(this.newTask=="") return;
+   //  console.log(this.newTask);
        let new_id = this.cTasks.slice(-1)[0].id + 1;
       this.cTasks.push({
         id: new_id,
