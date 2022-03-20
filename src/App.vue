@@ -10,10 +10,11 @@
   <!-- BoxTL component / assign Parameters-->    
   
   <boxTL v-for="tasklist in tasklists"  :key="tasklist.id"
+  :id="tasklist.id"
   :newTask="newTask" 
   :categoryName="tasklist.categoryName" 
-  :tasks="tasklist.task" @submitTask="submitTask"  
-  :modelValue="newTask" 
+  :tasks="tasklist.tasks" @submitTask="submitTask"  
+  :modelValue="tasklist.newTask" 
   @update:modelValue="tasklist.newTask = $event"/>
 </template>
 
@@ -38,10 +39,11 @@ export default {
     };
   },
   methods: {
-
+    //if boxTL.id 
   //Save new Task in Tasks Array 
-  submitTask: function submitTask() {
-    if(this.tasklist.newTask=="") return;
+  submitTask: function submitTask(id) {
+    for 
+    if(this.tasklists.newTask=="") return;
     let new_id = this.tasklist.tasks.slice(-1)[0].id + 1;
    //  console.log(this.newTask);
      this.tasklist.tasks.push({
@@ -50,7 +52,10 @@ export default {
        
 
       });
-      this.newTask = "";
+      this.tasklists.newTask="";
+    }
+
+    
    },
    createTL: function createTL() {
     if(this.newTL=="") return;

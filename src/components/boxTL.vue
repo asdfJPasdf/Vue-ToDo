@@ -42,11 +42,9 @@ export default {
   props: {
     id: {
       type: Number,
-      required: false,
     },
     categoryName: {
       type: String,
-      required: false,
     },
     tasks: {
       type: Array
@@ -60,7 +58,7 @@ export default {
   methods: {
   
     submitTask() {
-    this.$emit("submitTask");
+    this.$emit("submitTask", id);
       },
   },
   
