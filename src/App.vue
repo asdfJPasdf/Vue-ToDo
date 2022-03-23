@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       newTask: "",
-      cTasks: [{ id: 1, name: "hans" }], 
+      cTasks: [], 
     
     };
   },
@@ -37,13 +37,14 @@ export default {
 
   //Save new Task in Tasks Array 
   submitTask: function submitTask() {
+    let new_id;
     if(this.newTask=="") return;
-   //  console.log(this.newTask);
-       let new_id = this.cTasks.slice(-1)[0].id + 1;
-      this.cTasks.push({
+    if(this.cTasks.lenght){
+        new_id = this.cTasks.slice(-1)[0].id + 1;}
+    else { new_id = 1; }
+    this.cTasks.push({
         id: new_id,
         name: this.newTask,
-        
       });
       this.newTask = "";
       
