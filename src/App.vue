@@ -27,7 +27,7 @@
 </template>
 
 
-</template>
+
 
 <script>
 import boxTL from "./components/boxTL.vue";
