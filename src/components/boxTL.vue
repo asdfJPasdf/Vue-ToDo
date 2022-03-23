@@ -65,16 +65,9 @@ export default {
   
     submitTask() {
      console.log(this.newTask);
-    this.$emit("submitTask", this.newTask);
+     this.$emit("submitTask" );
       },
-        handleInput () {
-    this.$emit('input', this.content)
-    }
-  },
-    data: function () {
-       return {
-      content: this.value
-    }
+
   },
   
 

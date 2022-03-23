@@ -7,19 +7,27 @@
     :key="category.id"
     :newTask="newTask"
   /> -->
-  
-  <!-- BoxTL component / assign Parameters-->    
+  <!--new TL-->
+   <div class= "d-flex">
+        <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newTL"  @keyup.enter="createTL">
+        <button button class="btn  rounded-0" @click="createTL">create Tasklist</button> 
+        <br>
+    </div> 
   
  
 
-  <boxTL  
+  <!-- BoxTL component / assign Parameters-->    
+ <boxTL v-for="tasklist in tasklists"  :key="tasklist.id"
+  :id="tasklist.id"
   :newTask="newTask" 
-  :categoryName="NameCategory" 
-  :tasks="cTasks" @submitTask="submitTask"  
-  :modelValue="newTask" 
-  @update:modelValue="newTask = $event"/>
-
+  :categoryName="tasklist.categoryName" 
+  :tasks="tasklist.tasks" @submitTask="submitTask"  
+  :modelValue="tasklist.newTask" 
+  @update:modelValue="tasklist.newTask = $event"/>
 </template>
+
+
+
 
 <script>
 import boxTL from "./components/boxTL.vue";
@@ -41,6 +49,12 @@ export default {
       categories: [],
       newCategory: "",
       
+      newTL:"",
+      tasklists: [{id:1, 
+                  newTask: "",
+                  categoryName:"hello", 
+                  tasks:[{id:1, name: "hello"}]
+                  }]
 
 
     };
@@ -77,7 +91,21 @@ export default {
      removeTask(id) {
     axios.delete(`http://localhost:3000/todos/${id}`)
     this.cTasks = this.cTasks.filter(cTasks => cTasks.id !== id)
-}
+    },
+
+    createTL: function createTL() {
+    if(this.newTL=="") return;
+    let new_id = this.tasklists.slice(-1)[0].id + 1;
+   //  console.log(this.newTask);
+      this.tasklists.push({
+        id: new_id,
+        categoryName: this.newTL,
+        tasks:[]
+        
+      });
+      this.newTL = "";
+   },
+
       
       
 
