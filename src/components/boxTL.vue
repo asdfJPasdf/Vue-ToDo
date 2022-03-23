@@ -51,7 +51,7 @@ export default {
     tasks: {
       type: Array
       },
-      newTask: {
+    newTask: {
      type: String ,
      default: ""
     },
