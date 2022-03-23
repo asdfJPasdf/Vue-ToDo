@@ -1,17 +1,17 @@
 {
-  "tasklists":[
+  
+  "categories":[
     {
       "id":1,
-      "newTask":"",
-      "categoryName":"test",
+      "categoryName":"test"
+    }
+  ],
+
   "tasks": [
-  {
-    "id":1,
-    "name":"App Fertig machen"
-  }
-  ]
-
-
+    {
+      "id":1,
+      "taskName":"App Fertig machen",
+      "categoryId": 1
     }
   ]
 }

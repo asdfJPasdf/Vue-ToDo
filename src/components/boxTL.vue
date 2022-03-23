@@ -65,7 +65,8 @@ export default {
   
     submitTask() {
      console.log(this.newTask);
-     this.$emit("submitTask" );
+     this.$emit("submitTask",this.id );
+
       },
 
   },

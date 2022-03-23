@@ -46,19 +46,28 @@ export default {
       categoryName: "Hallo",
       todo:"",
       categories: [],
+      tasks:[],
       newCategory: "",
       
       newTL:"",
-      tasklists: [[]]
+      
                   
 
 
     };
   },
-   async created() {
+   async createdCategories() {
     try {
-      const res = await axios.get(`http://localhost:3000/tasklists`);
-      this.tasklists = res.data;
+      const res = await axios.get(`http://localhost:3000/categories`);
+      this.categories = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+   async createdTask() {
+    try {
+      const res = await axios.get(`http://localhost:3000/task`);
+      this.categories = res.data;
     } catch (error) {
       console.log(error);
     }
@@ -66,23 +75,37 @@ export default {
   methods: {
 
   //Save new Task in Tasks Array 
- async submitTask() {
+ async submitTask(id) {
     let new_id;
     if(this.newTask=="") return;
     if(this.tasklists.lenght){
         new_id = this.tasklists.slice(-1)[0].id + 1;}
     else { new_id = 1; }
-      const res = await axios.post(`http://localhost:3000/tasklists`, {
+      const res = await axios.post(`http://localhost:3000/task`, {
         id: new_id,
-        name: this.newTask
+        name: this.newTask,
+        categoryId: id
       });
-      this.tasklists = [...this.tasklists, res.data];
+      this.task = [...this.task, res.data];
 
      /*  
       this.tasklists.push({
         id: new_id,
         name: this.newTask,
         */
+     },
+     async submitCategories(id) {
+    let new_id;
+    if(this.newTask=="") return;
+    if(this.tasklists.lenght){
+        new_id = this.tasklists.slice(-1)[0].id + 1;}
+    else { new_id = 1; }
+      const res = await axios.post(`http://localhost:3000/task`, {
+        id: new_id,
+        name: this.newTask,
+        categoryId: id
+      });
+      this.task = [...this.task, res.data];
      },
      removeTask(id) {
     axios.delete(`http://localhost:3000/tasklists/${id}`)
