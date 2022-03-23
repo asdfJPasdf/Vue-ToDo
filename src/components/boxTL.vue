@@ -51,6 +51,10 @@ export default {
     tasks: {
       type: Array
       },
+      newTask: {
+     type: String ,
+     default: ""
+    },
 
      'modelValue': String,
   },
@@ -60,10 +64,18 @@ export default {
   methods: {
   
     submitTask() {
-    this.$emit("submitTask");
+     console.log(this.newTask);
+    this.$emit("submitTask", this.newTask);
       },
+        handleInput () {
+    this.$emit('input', this.content)
+    }
   },
-  
+    data: function () {
+       return {
+      content: this.value
+    }
+  },
   
 
 
