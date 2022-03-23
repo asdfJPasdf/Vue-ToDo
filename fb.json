@@ -1,8 +1,17 @@
 {
-  "todos": [
+  "tasklists":[
     {
-      "id": 1,
-      "name": "sdfsd"
+      "id":1,
+      "newTask":"",
+      "categoryName":"test",
+  "tasks": [
+  {
+    "id":1,
+    "name":"App Fertig machen"
+  }
+  ]
+
+
     }
   ]
 }
