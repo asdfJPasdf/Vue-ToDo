@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <tr v-for="task in tasks" :key="task.id">
-          <td>{{ task.name }}</td>
+          <td>{{ task.taskName }}</td>
           <td>
             <div class="text-center"><span class="fa fa-pen"></span>pen</div>
           </td>
@@ -48,7 +48,7 @@ export default {
     categoryName: {
       type: String,
       required: false,
-      
+
     },
     tasks: {
       type: Array

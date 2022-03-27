@@ -22,7 +22,7 @@
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
   :tasks="tasks" @submitTask="submitTask"  
-  :modelValue="categorie.newTask" 
+  :modelValue="newTask" 
   @update:modelValue="categorie.newCategory = $event"/>
 
 </template>
@@ -92,7 +92,7 @@ this.$toast.show(`You cannot add an empty trask!`,{
       });
 }
     if(this.tasks.lenght){
-        new_id = this.tasklists.slice(-1)[0].id + 1;}
+        new_id = this.tasks.slice(-1)[0].id + 1;}
     else { new_id = 1; }
       const res = await axios.post(`http://localhost:3000/tasks`, {
         id: new_id,
