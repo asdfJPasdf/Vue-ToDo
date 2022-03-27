@@ -9,21 +9,22 @@
   /> -->
   <!--new TL-->
    <div class= "d-flex">
-        <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newTL"  @keyup.enter="submitCategories">
+        <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newCategory"  @keyup.enter="submitCategories">
         <button button class="btn btn-dark" @click="submitCategories">create Tasklist</button> 
         <br>
     </div> 
-  <boxTL v-for="categorie in categories "  :key="categorie.id"
-  :id="categorie.id"
-  :newCategory="newCategory" 
-  :categoryName="categorie.categoryName" 
-  :tasks="categorie.tasks" @submitTask="submitTask"  
-  :modelValue="categorie.newTask" 
-  @update:modelValue="categorie.newCategory = $event"/>
+
  
 
   <!-- BoxTL component / assign Parameters-->    
- 
+   <boxTL v-for="categorie in categories "  :key="categorie.id"
+  :id="categorie.id"
+  :newCategory="newCategory" 
+  :categoryName="categorie.categoryName" 
+  :tasks="tasks" @submitTask="submitTask"  
+  :modelValue="categorie.newTask" 
+  @update:modelValue="categorie.newCategory = $event"/>
+
 </template>
 
 
@@ -42,35 +43,38 @@ export default {
   data() {
     return {
       newTask: "",
-      NameCategory: "test",
-      categoryName: "Hallo",
-      todo:"",
       categories: [],
       tasks:[],
       newCategory: "",  
       newTL:"",
+
+
+        //nicht verwendet
+     // NameCategory: "test",
+     // categoryName: "Hallo",
+     // todo:"",
       
                   
 
 
     };
   },
-   async createdCategories() {
+   async created() {
     try {
-      const res = await axios.get(`http://localhost:3000/categories`);
-      this.categories = res.data;
+      const resCategories = await axios.get(`http://localhost:3000/categories`);
+      this.categories = resCategories.data;
+    } catch (error) {
+      console.log(error);
+    }
+    
+    try {
+      const resTasks = await axios.get(`http://localhost:3000/tasks`);
+      this.tasks = resTasks.data;
     } catch (error) {
       console.log(error);
     }
   },
-   async createdTask() {
-    try {
-      const res = await axios.get(`http://localhost:3000/task`);
-      this.categories = res.data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
+  
   methods: {
 
   //Save new Task in Tasks Array 
@@ -93,24 +97,41 @@ export default {
         name: this.newTask,
         */
      },
-     async submitCategories(id) {
-    let new_id;
-    if(this.newCategory=="") return;
-    if(this.categories.lenght){
-        new_id = this.categories.slice(-1)[0].id + 1;}
-    else { new_id = 1; }
+
+
+     
+     async submitCategories() { 
+      
+    if(this.newCategory==="") {
+      
+    alert("You must give the category a name!");
+     
+    }
+    else{
+   let new_id; 
+    if(this.categories.lenght==0){
+        new_id=1;
+        }
+   else if (this.categories.lenght>0) { new_id = this.categories.slice(-1)[0].id + 1;}
+    
       const res = await axios.post(`http://localhost:3000/categories`, {
         id: new_id,
-        name: this.newCategory,
-        categoryId: id
+        categoryName: this.newCategory,
       });
-      this.task = [...this.task, res.data];
+       
+      this.categories = [...this.categories, res.data];
+
+      this.newCategory="";
+      
+    }
      },
-     removeTask(id) {
+
+
+   /*  removeTask(id) {
     axios.delete(`http://localhost:3000/tasklists/${id}`)
     this.tasklists = this.tasklists.filter(tasklists => tasklists.id !== id)
     },
- /*async createTL() {
+ async createTL() {
     if(this.newTL=="") return;
     let new_id_box = this.tasklists.slice(-1)[0].id + 1;
    //  console.log(this.newTask);

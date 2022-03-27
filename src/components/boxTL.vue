@@ -2,9 +2,10 @@
   <div class="container p-3 my-3 border">
     <!-- Title-->
     <h3>{{ categoryName }}</h3>
-    <!--New Task Input--> 
+    <!--New Task Input-->
+   
     <div class="d-flex">
-       <input type="text"  placeholder="Add Task List"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask"/>
+       <input type="text"  placeholder="Add a Task"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask"/>
       <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
       <br />
     </div>
@@ -47,6 +48,7 @@ export default {
     categoryName: {
       type: String,
       required: false,
+      
     },
     tasks: {
       type: Array

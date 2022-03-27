@@ -1,16 +1,34 @@
 {
-  
-  "categories":[
+  "categories": [
     {
-      "id":1,
-      "categoryName":"test"
+      "categoryName": "sfsd",
+      "id": 1
+    },
+    {
+      "categoryName": "sfdfsd",
+      "id": 2
+    },
+    {
+      "categoryName": "sd",
+      "id": 3
+    },
+    {
+      "categoryName": "sdfsd",
+      "id": 4
+    },
+    {
+      "categoryName": "sdfsd",
+      "id": 5
+    },
+    {
+      "categoryName": "dd",
+      "id": 6
     }
   ],
-
   "tasks": [
     {
-      "id":1,
-      "taskName":"App Fertig machen",
+      "id": 1,
+      "taskName": "App Fertig machen",
       "categoryId": 1
     }
   ]
