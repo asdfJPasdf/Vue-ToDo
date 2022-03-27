@@ -33,6 +33,8 @@
 <script>
 import boxTL from "./components/boxTL.vue";
 import axios from "axios";
+
+
 /*import createTL from './components/createTL.vue'*/
 
 export default {
@@ -80,8 +82,16 @@ export default {
   //Save new Task in Tasks Array 
  async submitTask(id) {
     let new_id;
-    if(this.newTask=="") return;
-    if(this.tasklists.lenght){
+    if(this.newTask=="")
+    {
+this.$toast.show(`You cannot add an empty trask!`,{
+        type:"error",
+        position:'top-right',
+        duration:3000,
+
+      });
+}
+    if(this.tasks.lenght){
         new_id = this.tasklists.slice(-1)[0].id + 1;}
     else { new_id = 1; }
       const res = await axios.post(`http://localhost:3000/tasks`, {
@@ -99,12 +109,17 @@ export default {
      },
 
 
-     
+
      async submitCategories() { 
       
     if(this.newCategory==="") {
-      
-    alert("You must give the category a name!");
+      this.$toast.show(`You must give the category a name!`,{
+        type:"error",
+        position:'top-right',
+        duration:3000,
+
+      });
+    
      
     }
     else{
