@@ -23,7 +23,7 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Installed Packagers
+### Installed Packages
 ```
 npm install @meforma/vue-toaster
 npm install json-server
