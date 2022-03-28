@@ -16,37 +16,31 @@
       <thead>
         <tr>
           <th scope="col">Task</th>
-          <th scope="col">#</th>
-          <th scope="col">#</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
-      <tbody>
-       
-        
-        <tr>
-          <div v-for="task in tasks" :key="task.id " >
-            <div v-if="task.categoryId == id" >
+      <tbody v-for="task in tasks"  :key="task.id " >
+        <tr  v-if="task.categoryId == id">
           <td>
             {{ task.taskName }}
           </td>
-          </div> 
-          </div> 
+  
+  
           <td>
-          
             <div class="text-center">
-              <span class="fa fa-pen"></span>pen
+              <i class="bi bi-pencil-fill"></i> <!--Darkmode : <i class="bi bi-pencil"></i>-->
+
             </div>
-            
           </td>
           
           <td>
             <div class="text-center">
-              <span class="fa fa-trash"></span>trash
+              <i class="bi bi-trash-fill"></i> <!--Darkmode : <i class="bi bi-trash"></i>-->
             </div>
           </td>
          
         </tr>
-        
       </tbody>
     </table>
   </div>
@@ -63,7 +57,6 @@ export default {
     categoryName: {
       type: String,
       required: false,
-
     },
     tasks: {
       type: Array
@@ -72,12 +65,9 @@ export default {
      type: String ,
      default: ""
     },
-
      'modelValue': String,
   },
-
   
-
   methods: {
   
     submitTask() {
@@ -85,12 +75,12 @@ export default {
      this.$emit("submitTask",this.id );
       
       },
-
   },
   
-
-
-
-
 };
 </script>
+<style scoped>
+tbody{
+  text-align: left;
+}
+</style> 
