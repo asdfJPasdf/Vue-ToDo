@@ -20,23 +20,17 @@
           <th scope="col">#</th>
         </tr>
       </thead>
-      <tbody>
-       
-        
-        <tr>
-          <div v-for="task in tasks" :key="task.id " >
-            <div v-if="task.categoryId == id" >
+      <tbody v-for="task in tasks"  :key="task.id " >
+        <tr  v-if="task.categoryId == id">
           <td>
             {{ task.taskName }}
           </td>
-          </div> 
-          </div> 
+  
+  
           <td>
-          
             <div class="text-center">
               <span class="fa fa-pen"></span>pen
             </div>
-            
           </td>
           
           <td>
@@ -46,7 +40,6 @@
           </td>
          
         </tr>
-        
       </tbody>
     </table>
   </div>
@@ -94,3 +87,9 @@ export default {
 
 };
 </script>
+<style scoped>
+
+tbody{
+  text-align: left;
+}
+</style> 
