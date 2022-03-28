@@ -22,7 +22,7 @@
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
   :tasks="tasks" @submitTask="submitTask"  
-  v-model="newTask"
+  v-model="categorie.newTask"
   @update:modelValue="categorie.newCategory = $event"/>
 
 </template>
@@ -83,8 +83,11 @@ export default {
  async submitTask(id) {
     let new_id;
     
+    const index = this.categories.findIndex(item => item.id === id);
+
+    
     console.log(this.newTask);
-    if(this.newTask=="")
+    if(this.categories[index].newTask =="")
     {
     this.$toast.show(`You cannot add an empty trask!`,{
         type:"error",
@@ -101,10 +104,13 @@ export default {
    else if (this.categories.lenght>0) { new_id = this.categories.slice(-1)[0].id + 1;}
       const res = await axios.post(`http://localhost:3000/tasks`, {
         id: new_id,
-        taskName: this.newTask,
+        taskName: this.categories[index].newTask ,
         categoryId: id
       });
+      this.categories[index].newTask = "";
       this.tasks = [...this.tasks, res.data];
+      
+
 
      /*  
       this.tasklists.push({
@@ -115,7 +121,7 @@ export default {
 
 
 
-     async submitCategories() { 
+   async submitCategories() { 
       
     if(this.newCategory==="") {
       this.$toast.show(`You must give the category a name!`,{
@@ -137,6 +143,7 @@ export default {
       const res = await axios.post(`http://localhost:3000/categories`, {
         id: new_id,
         categoryName: this.newCategory,
+        newTask: ""
       });
        
       this.categories = [...this.categories, res.data];
