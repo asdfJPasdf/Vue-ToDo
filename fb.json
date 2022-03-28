@@ -1,76 +1,91 @@
 {
   "categories": [
     {
-      "categoryName": "asdf",
+      "categoryName": "Todos um app zu beenden",
       "newTask": "",
       "id": 1
     },
     {
-      "categoryName": "asdf",
+      "categoryName": "search todos",
       "newTask": "",
       "id": 2
     },
     {
-      "categoryName": "sd",
+      "categoryName": "Fragen?",
       "newTask": "",
       "id": 3
     }
   ],
   "tasks": [
     {
-      "taskName": "finally works ",
+      "taskName": "status attribut implemetirenn",
       "categoryId": 1,
       "id": 1
     },
     {
-      "taskName": "juhu",
+      "taskName": "edit implementieren",
       "categoryId": 1,
       "id": 2
     },
     {
-      "taskName": "judihui ",
-      "categoryId": 2,
+      "taskName": "delet implemetiren",
+      "categoryId": 1,
       "id": 3
     },
     {
-      "taskName": "asdf",
+      "taskName": "darkmode",
       "categoryId": 1,
       "id": 4
     },
     {
-      "taskName": "asdf",
-      "categoryId": 2,
+      "taskName": "search beenden",
+      "categoryId": 1,
       "id": 5
     },
     {
-      "taskName": "asdf",
+      "taskName": "search kategories",
       "categoryId": 2,
       "id": 6
     },
     {
-      "taskName": "asdf",
-      "categoryId": 1,
+      "taskName": "search task",
+      "categoryId": 2,
       "id": 7
     },
     {
-      "taskName": "asdf",
-      "categoryId": 1,
+      "taskName": "search status",
+      "categoryId": 2,
       "id": 8
     },
     {
-      "taskName": "jj",
-      "categoryId": 1,
+      "taskName": "Wieso sind in der ersten checkbox dicke schwarze linen",
+      "categoryId": 3,
       "id": 9
     },
     {
-      "taskName": "jj",
-      "categoryId": 1,
+      "taskName": "wieso ist unsere Todo app so fancy",
+      "categoryId": 3,
       "id": 10
     },
     {
-      "taskName": "sdsd",
+      "taskName": "Mock up stimmt nicht so ganz mit app über ein was tun?",
       "categoryId": 3,
       "id": 11
+    },
+    {
+      "taskName": "Sie funktioniert es nur das erste elemet zu löschen ",
+      "categoryId": 3,
+      "id": 12
+    },
+    {
+      "taskName": "ersten 3 es hat keine Reienfolge",
+      "categoryId": 3,
+      "id": 13
+    },
+    {
+      "taskName": "problem mit ids beim löschen",
+      "categoryId": 3,
+      "id": 14
     }
   ]
 }

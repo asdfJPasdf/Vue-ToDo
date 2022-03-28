@@ -25,6 +25,7 @@
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
   :tasks="tasks" @submitTask="submitTask"  
+  @removeTask="removeTask(tasks.id)"
   v-model="categorie.newTask"
   @update:modelValue="categorie.newCategory = $event"/>
 
@@ -157,10 +158,11 @@ export default {
      },
 
 
-   /*  removeTask(id) {
+    removeTask(id) {
     axios.delete(`http://localhost:3000/tasklists/${id}`)
-    this.tasklists = this.tasklists.filter(tasklists => tasklists.id !== id)
+    this.tasks = this.tasks.filter(tasks => tasks.id !== id)
     },
+    /*
  async createTL() {
     if(this.newTL=="") return;
     let new_id_box = this.tasklists.slice(-1)[0].id + 1;

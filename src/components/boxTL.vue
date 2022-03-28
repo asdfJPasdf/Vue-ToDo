@@ -15,6 +15,7 @@
     <table class="table table-bordered mt-5">
       <thead>
         <tr>
+          <th scope="col">Status</th>
           <th scope="col">Task</th>
           <th scope="col">Edit</th>
           <th scope="col">Delete</th>
@@ -22,6 +23,10 @@
       </thead>
       <tbody v-for="task in tasks"  :key="task.id " >
         <tr  v-if="task.categoryId == id">
+
+          <td>
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          </td>
           <td>
             {{ task.taskName }}
           </td>
@@ -29,14 +34,14 @@
   
           <td>
             <div class="text-center">
-              <i class="bi bi-pencil-fill"></i> <!--Darkmode : <i class="bi bi-pencil"></i>-->
+             <button ><i class="bi bi-pencil-fill" ></i></button>  <!--Darkmode : <i class="bi bi-pencil"></i>-->
 
             </div>
           </td>
           
           <td>
             <div class="text-center">
-              <i class="bi bi-trash-fill"></i> <!--Darkmode : <i class="bi bi-trash"></i>-->
+             <button v-on:click="removeTask(id)"><i class="bi bi-trash-fill"></i></button>  <!--Darkmode : <i class="bi bi-trash"></i>-->
             </div>
           </td>
          
@@ -73,6 +78,11 @@ export default {
     submitTask() {
      console.log(this.newTask);
      this.$emit("submitTask",this.id );
+      
+      },
+    removeTask() {
+    
+     this.$emit("removeTask",this.id );
       
       },
   },
