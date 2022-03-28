@@ -22,21 +22,31 @@
       </thead>
       <tbody>
        
-        <div v-for="task in tasks" :key="task.id " >
- <tr v-if="task.categoryId == id" ></div>
-         
-          <td>{{ task.taskName }}</td>
+        
+        <tr>
+          <div v-for="task in tasks" :key="task.id " >
+            <div v-if="task.categoryId == id" >
           <td>
-            <div class="text-center"><span class="fa fa-pen"></span>pen</div>
+            {{ task.taskName }}
           </td>
+          </div> 
+          </div> 
+          <td>
+          
+            <div class="text-center">
+              <span class="fa fa-pen"></span>pen
+            </div>
+            
+          </td>
+          
           <td>
             <div class="text-center">
               <span class="fa fa-trash"></span>trash
             </div>
           </td>
-      
+         
         </tr>
-        </div>
+        
       </tbody>
     </table>
   </div>
