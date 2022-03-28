@@ -20,10 +20,9 @@
    <boxTL v-for="categorie in categories "  :key="categorie.id"
   :id="categorie.id"
   :newCategory="newCategory" 
-  :newTask="newTask"
   :categoryName="categorie.categoryName" 
   :tasks="tasks" @submitTask="submitTask"  
-  :modelValue="newTask" 
+  v-model="newTask"
   @update:modelValue="categorie.newCategory = $event"/>
 
 </template>
@@ -83,7 +82,7 @@ export default {
   //Save new Task in Tasks Array 
  async submitTask(id) {
     let new_id;
-    console.log(id);
+    
     console.log(this.newTask);
     if(this.newTask=="")
     {

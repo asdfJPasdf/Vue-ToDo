@@ -81,7 +81,7 @@ export default {
   methods: {
   
     submitTask() {
-    // console.log(this.newTask);
+     console.log(this.newTask);
      this.$emit("submitTask",this.id );
       
       },
