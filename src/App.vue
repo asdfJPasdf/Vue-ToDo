@@ -20,6 +20,7 @@
    <boxTL v-for="categorie in categories "  :key="categorie.id"
   :id="categorie.id"
   :newCategory="newCategory" 
+  :newTask="newTask"
   :categoryName="categorie.categoryName" 
   :tasks="tasks" @submitTask="submitTask"  
   :modelValue="newTask" 
@@ -82,24 +83,29 @@ export default {
   //Save new Task in Tasks Array 
  async submitTask(id) {
     let new_id;
+    console.log(id);
+    console.log(this.newTask);
     if(this.newTask=="")
     {
-this.$toast.show(`You cannot add an empty trask!`,{
+    this.$toast.show(`You cannot add an empty trask!`,{
         type:"error",
         position:'top-right',
         duration:3000,
 
       });
+      return 
+
 }
-    if(this.tasks.lenght){
-        new_id = this.tasks.slice(-1)[0].id + 1;}
-    else { new_id = 1; }
+   if(this.categories.lenght==0){
+        new_id=1;
+        }
+   else if (this.categories.lenght>0) { new_id = this.categories.slice(-1)[0].id + 1;}
       const res = await axios.post(`http://localhost:3000/tasks`, {
         id: new_id,
-        name: this.newCategory,
+        taskName: this.newTask,
         categoryId: id
       });
-      this.task = [...this.task, res.data];
+      this.tasks = [...this.tasks, res.data];
 
      /*  
       this.tasklists.push({

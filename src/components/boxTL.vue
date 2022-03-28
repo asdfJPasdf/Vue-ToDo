@@ -5,8 +5,8 @@
     <!--New Task Input-->
    
     <div class="d-flex">
-       <input type="text"  placeholder="Add a Task"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask"/>
-      <button class="btn rounded-0" @click="submitTask">SUBMIT</button>
+       <input type="text"  placeholder="Add a Task"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask(id)"/>
+      <button class="btn rounded-0" @click="submitTask(id)">SUBMIT</button>
       <br />
     </div>
 
@@ -21,7 +21,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="task in tasks" :key="task.id">
+       
+        <div v-for="task in tasks" :key="task.id " >
+ <tr v-if="task.categoryId == id" ></div>
+         
           <td>{{ task.taskName }}</td>
           <td>
             <div class="text-center"><span class="fa fa-pen"></span>pen</div>
@@ -31,7 +34,9 @@
               <span class="fa fa-trash"></span>trash
             </div>
           </td>
+      
         </tr>
+        </div>
       </tbody>
     </table>
   </div>
@@ -66,9 +71,9 @@ export default {
   methods: {
   
     submitTask() {
-     console.log(this.newTask);
+    // console.log(this.newTask);
      this.$emit("submitTask",this.id );
-
+      
       },
 
   },
