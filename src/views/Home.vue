@@ -10,6 +10,7 @@
   /> -->
   <!--new TL-->
 <h1>Vue-ToDo</h1>
+
    <div class= "d-flex justify-content-center" style="position:absolute top:5px" >
      <center>        <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newCategory"  @keyup.enter="submitCategories">
         <button button class="btn btn-dark" @click="submitCategories">create Tasklist</button> 
@@ -17,7 +18,12 @@
         </center>
 
     </div> 
-    
+    <div class= "position-absolute top-1 end-0" >
+       <input type="text" placeholder="Search.." class="form-control-sm" v-model="searchTerm"  @keyup.enter="submitCategories">
+        <!--<button button class="btn btn-dark" @click="searchTask">search</button> -->
+        <br> 
+    </div> 
+
     <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
 
   <!-- BoxTL component / assign Parameters-->    
@@ -185,7 +191,7 @@ export default {
 
   },
   computed: {
-  filtered_students() {
+  filtered_Tasks() {
 
 			if (this.search_text) {
 
