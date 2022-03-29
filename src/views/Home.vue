@@ -27,8 +27,8 @@
     <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
 
   <!-- BoxTL component / assign Parameters-->    
-  <div  v-if="filtered_Categorie.length">
-   <boxTL v-for="categorie in filtered_Categorie "  :key="categorie.id"
+  
+   <boxTL v-for="categorie in categories "  :key="categorie.id"
   :id="categorie.id"
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
@@ -39,10 +39,7 @@
   @taskStatus="taskStatus"
   @update:modelValue="categorie.newCategory = $event"/>
   </div>
-   <p v-else class="mt-2">
-			It doesn't exist a categorie with this name
-		</p>
-  </div>
+  
 </template>
 
 
@@ -233,31 +230,6 @@ console.log(this.tasks[id].taskName);
   },
  
   
-computed: {
-  filtered_Categorie() {
-
-			if (this.searchTerm) {
-
-				// Return a filtered array
-				return this.categories.filter(categorie => {
-					
-					// Set filter by check every word of search text
-					return this.searchTerm
-							.toLowerCase()
-							.split(' ')
-							.every(word => {
-								return 	categorie.categoryName.toLowerCase().includes(word)
-										
-							});
-				});
-       
-
-			}
-		else {
-				return this.categorie
-			}
-		},
-  }
 
   
 }
