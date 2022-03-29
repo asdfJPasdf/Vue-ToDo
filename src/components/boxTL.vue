@@ -25,10 +25,10 @@
         <tr  v-if="task.categoryId == id">
 
           <td>
-             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  v-model="task.status">
           </td>
-          <td>
-            {{ task.taskName }}
+          <td >
+            <h5 :class="{isChecked:task.status }"> {{ task.taskName }}</h5>
           </td>
   
   
@@ -92,5 +92,7 @@ export default {
 <style scoped>
 tbody{
   text-align: left;
+}
+.isChecked{ text-decoration: line-through
 }
 </style> 

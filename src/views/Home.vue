@@ -27,6 +27,7 @@
   :tasks="tasks" @submitTask="submitTask"  
   @removeTask="removeTask(tasks.id)"
   v-model="categorie.newTask"
+  
   @update:modelValue="categorie.newCategory = $event"/>
 
 </template>
@@ -109,7 +110,8 @@ export default {
       const res = await axios.post(`http://localhost:3000/tasks`, {
         id: new_id,
         taskName: this.categories[index].newTask ,
-        categoryId: id
+        categoryId: id,
+        status: false
       });
       this.categories[index].newTask = "";
       this.tasks = [...this.tasks, res.data];
@@ -193,4 +195,7 @@ export default {
 </script> 
 
 <style>
+.checked active{
+  text-decoration:line-through; 
+}
 </style>

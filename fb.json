@@ -14,6 +14,11 @@
       "categoryName": "Fragen?",
       "newTask": "",
       "id": 3
+    },
+    {
+      "categoryName": "testTL",
+      "newTask": "",
+      "id": 4
     }
   ],
   "tasks": [
@@ -86,6 +91,30 @@
       "taskName": "problem mit ids beim löschen",
       "categoryId": 3,
       "id": 14
+    },
+    {
+      "taskName": "test1",
+      "categoryId": 4,
+      "status": false,
+      "id": 15
+    },
+    {
+      "taskName": "asdf",
+      "categoryId": 4,
+      "status": false,
+      "id": 16
+    },
+    {
+      "taskName": "asdf",
+      "categoryId": 1,
+      "status": false,
+      "id": 17
+    },
+    {
+      "taskName": "kmj",
+      "categoryId": 4,
+      "status": false,
+      "id": 18
     }
   ]
 }
