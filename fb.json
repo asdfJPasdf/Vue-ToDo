@@ -25,72 +25,86 @@
     {
       "taskName": "status attribut implemetirenn",
       "categoryId": 1,
-      "id": 1
+      "id": 1,
+      "status": false
     },
     {
       "taskName": "edit implementieren",
       "categoryId": 1,
-      "id": 2
+      "id": 2,
+      "status": true
     },
     {
       "taskName": "delet implemetiren",
       "categoryId": 1,
-      "id": 3
+      "id": 3,
+      "status": false
     },
     {
       "taskName": "darkmode",
       "categoryId": 1,
-      "id": 4
+      "id": 4,
+      "status": true
     },
     {
       "taskName": "search beenden",
       "categoryId": 1,
-      "id": 5
+      "id": 5,
+      "status": false
     },
     {
       "taskName": "search kategories",
       "categoryId": 2,
-      "id": 6
+      "id": 6,
+      "status": false
     },
     {
       "taskName": "search task",
       "categoryId": 2,
-      "id": 7
+      "id": 7,
+      "status": false
     },
     {
       "taskName": "search status",
       "categoryId": 2,
-      "id": 8
+      "id": 8,
+      "status": false
     },
     {
       "taskName": "Wieso sind in der ersten checkbox dicke schwarze linen",
       "categoryId": 3,
-      "id": 9
+      "id": 9,
+      "status": false
     },
     {
       "taskName": "wieso ist unsere Todo app so fancy",
       "categoryId": 3,
-      "id": 10
+      "id": 10,
+      "status": false
     },
     {
       "taskName": "Mock up stimmt nicht so ganz mit app über ein was tun?",
       "categoryId": 3,
-      "id": 11
+      "id": 11,
+      "status": false
     },
     {
       "taskName": "Sie funktioniert es nur das erste elemet zu löschen ",
       "categoryId": 3,
-      "id": 12
+      "id": 12,
+      "status": false
     },
     {
       "taskName": "ersten 3 es hat keine Reienfolge",
       "categoryId": 3,
-      "id": 13
+      "id": 13,
+      "status": false
     },
     {
-      "taskName": "problem mit ids beim löschen",
+      "taskName": "problem mit idts beim löschen",
       "categoryId": 3,
-      "id": 14
+      "id": 14,
+      "status": false
     },
     {
       "taskName": "test1",
@@ -115,6 +129,18 @@
       "categoryId": 4,
       "status": false,
       "id": 18
+    },
+    {
+      "taskName": "ff",
+      "categoryId": 1,
+      "status": false,
+      "id": 19
+    },
+    {
+      "taskName": "dd",
+      "categoryId": 1,
+      "status": false,
+      "id": 20
     }
   ]
 }

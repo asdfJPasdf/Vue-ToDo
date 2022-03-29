@@ -2,7 +2,8 @@
   <div id="nav" style="position:absolute; top:0px; right:80px;">
     <router-link to="/">Home</router-link> |
      <i class="bi bi-search"></i>
-    <router-link to="/search">Search</router-link>
+    <router-link to="/tasks">Tasks</router-link>
+   
   </div>
   <router-view/>
    

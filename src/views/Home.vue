@@ -19,7 +19,7 @@
 
     </div> 
     <div class= "position-absolute top-1 end-0" >
-       <input type="text" placeholder="Search.." class="form-control-sm" v-model="searchTerm"  @keyup.enter="submitCategories">
+       <input type="text" placeholder="Search Categorie..." class="form-control-sm" v-model="searchTerm" >
         <!--<button button class="btn btn-dark" @click="searchTask">search</button> -->
         <br> 
     </div> 
@@ -27,15 +27,21 @@
     <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
 
   <!-- BoxTL component / assign Parameters-->    
-   <boxTL v-for="categorie in categories "  :key="categorie.id"
+  <div  v-if="filtered_Categorie.length">
+   <boxTL v-for="categorie in filtered_Categorie "  :key="categorie.id"
   :id="categorie.id"
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
-  :tasks="tasks" @submitTask="submitTask"  
+  :tasks="tasks" 
+  @submitTask="submitTask"  
   @removeTask="removeTask(tasks.id)"
   v-model="categorie.newTask"
-  
+  @taskStatus="taskStatus"
   @update:modelValue="categorie.newCategory = $event"/>
+  </div>
+   <p v-else class="mt-2">
+			It doesn't exist a categorie with this name
+		</p>
   </div>
 </template>
 
@@ -90,6 +96,7 @@ export default {
       console.log(error);
     }
   },
+
   
   methods: {
 
@@ -167,6 +174,40 @@ export default {
       
     }
      },
+    /*   async taskStatus(id) {
+         console.log(typeof this.tasks)
+   console.log(this.tasks[1]["id"])
+   console.log(this.tasks[id])
+console.log(this.tasks[id].status);
+console.log(this.tasks[id].taskName);
+  try {
+    if(this.tasks[id].status){ 
+        await axios.patch(`${`http://localhost:3000/tasks`}/${id}`, {
+            status: false
+        });
+        this.tasks = this.tasks.map(task => {
+            if (task.id === id) {
+                task.status = false;
+            }
+            return task;
+        });
+    }
+    else{
+        await axios.patch(`${`http://localhost:3000/tasks`}/${id}`, {
+            status: true
+        });
+        this.tasks = this.tasks.map(task => {
+            if (task.id === id) {
+                task.status = true;
+            }
+            return task;
+        });
+    } 
+  }
+    catch (error) {
+        console.error(error);
+    }
+},*/
 
 
     removeTask(id) {
@@ -190,44 +231,37 @@ export default {
       
 
   },
-  computed: {
-  filtered_Tasks() {
+ 
+  
+computed: {
+  filtered_Categorie() {
 
-			if (this.search_text) {
+			if (this.searchTerm) {
 
 				// Return a filtered array
-				return this.tasks.filter(task => {
+				return this.categories.filter(categorie => {
 					
 					// Set filter by check every word of search text
 					return this.searchTerm
 							.toLowerCase()
 							.split(' ')
 							.every(word => {
-								return 	task.taskName.toLowerCase().includes(word)
-										|| 
-										task.done.toString().includes(word)
-										|| 
-										task.categoryName.toString().toLowerCase().includes(word)
+								return 	categorie.categoryName.toLowerCase().includes(word)
+										
 							});
 				});
+       
 
 			}
-			else {
-				return this.tasks;
+		else {
+				return this.categorie
 			}
-		
 		},
-   /*async addItem() {
-      const res = await axios.post(`http://localhost:3000/todos`, {
-        name: this.newTask,
-      });
-      this.tasklists = [...this.tasklists, res.data];
-      this.newTask = "";
-    },*/
+  }
 
   
 }
-}
+
 
 </script> 
 

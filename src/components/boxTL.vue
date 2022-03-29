@@ -26,10 +26,10 @@
         <tr  v-if="task.categoryId == id">
 
           <td>
-             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  v-model="task.status">
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @click="taskStatus(this.id)" v-model="task.status">
           </td>
           <td >
-            <h5 :class="{isChecked:task.status }"> {{ task.taskName }}</h5>
+            <h5 :class="{isChecked:task.status }" > {{ task.taskName }}</h5>
           </td>
   
   
@@ -86,6 +86,11 @@ export default {
     removeTask() {
     
      this.$emit("removeTask",this.id );
+      
+      },
+    taskStatus() {
+    
+     this.$emit("taskStatus",this.id );
       
       },
   },
