@@ -50,12 +50,7 @@ export default {
     };
   },
    async created() {
-    try {
-      const resCategories = await axios.get(`http://localhost:3000/categories`);
-      this.categories = resCategories.data;
-    } catch (error) {
-      console.log(error);
-    }
+   
     
     try {
       const resTasks = await axios.get(`http://localhost:3000/tasks`);

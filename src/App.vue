@@ -2,12 +2,23 @@
   <div id="nav" style="position:absolute; top:0px; right:80px;">
     <router-link to="/">Home</router-link> |
      <i class="bi bi-search"></i>
-    <router-link to="/tasks">Tasks</router-link>
+    <router-link to="/tasks">Tasks</router-link> |
+   <!-- <i class="bi bi-search"></i> 
+    <router-link to="/categorie">Categorie</router-link>-->
    
   </div>
   <router-view/>
    
 </template>
+<script>
+import Darkmode from 'darkmode-js';
+new Darkmode().showWidget();
+export default {
+ 
+    
+ 
+}
+</script>
 
 <style>
 #app {

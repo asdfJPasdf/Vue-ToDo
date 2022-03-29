@@ -1,4 +1,4 @@
-<template>
+<template >
 <div :class="{isDarkmode:darkmode}">
   <!-- <createTL :newCategory="newCategory" :categories="categories" /> 
   <boxTL v-for="category in categories" 
@@ -24,12 +24,12 @@
         <br> 
     </div> 
 
-    <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
+    <!--<button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> -->
 
   <!-- BoxTL component / assign Parameters-->    
   
- <div  v-if="filtered_Categorie.length">
-   <boxTL v-for="categorie in filtered_Categorie "  :key="categorie.id"
+ 
+   <boxTL v-for="categorie in categories "  :key="categorie.id"
   :id="categorie.id"
   :newCategory="newCategory" 
   :categoryName="categorie.categoryName" 
@@ -40,10 +40,8 @@
   @taskStatus="taskStatus"
   @update:modelValue="categorie.newCategory = $event"/>
   </div>
-   <p v-else class="mt-2">
-			It doesn't exist a categorie with this name
-		</p>
-  </div>
+   
+
   
 </template>
 
@@ -70,7 +68,7 @@ export default {
       newCategory: "",  
       newTL:"",
       searchTerm: "",
-      darkmode: false
+     // darkmode: false
 
 
         //nicht verwendet
