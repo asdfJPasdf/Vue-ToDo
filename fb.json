@@ -86,13 +86,13 @@
       "taskName": "Mock up stimmt nicht so ganz mit app über ein was tun?",
       "categoryId": 3,
       "id": 11,
-      "status": false
+      "status": true
     },
     {
       "taskName": "Sie funktioniert es nur das erste elemet zu löschen ",
       "categoryId": 3,
       "id": 12,
-      "status": false
+      "status": true
     },
     {
       "taskName": "ersten 3 es hat keine Reienfolge",

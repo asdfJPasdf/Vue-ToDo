@@ -37,6 +37,7 @@
   @submitTask="submitTask"  
   @removeTask="removeTask(tasks.id)"
   v-model="categorie.newTask"
+  @deleteChecklist="deleteChecklist"
   @taskStatus="taskStatus"
   @update:modelValue="categorie.newCategory = $event"/>
   </div>
@@ -174,6 +175,15 @@ export default {
       
     }
      },
+
+    //  async deleteChecklist(id){
+    //    //const id = id;
+    //    console.log(id);
+    //   const res =  await axios.delete(`http://localhost:3000/categories/${id}`);
+          
+    //       categories: res.categories
+
+    //  }}
     /*   async taskStatus(id) {
          console.log(typeof this.tasks)
    console.log(this.tasks[1]["id"])
@@ -210,10 +220,10 @@ console.log(this.tasks[id].taskName);
 },*/
 
 
-    removeTask(id) {
-    axios.delete(`http://localhost:3000/tasklists/${id}`)
-    this.tasks = this.tasks.filter(tasks => tasks.id !== id)
-    },
+   // removeTask(id) {
+    // axios.delete(`http://localhost:3000/tasklists/${id}`)
+    // this.tasks = this.tasks.filter(tasks => tasks.id !== id)
+    
     /*
  async createTL() {
     if(this.newTL=="") return;

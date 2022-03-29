@@ -5,12 +5,12 @@
     <h3>{{ categoryName }}</h3>
     <!--New Task Input-->
    
-    <div class="d-flex">
+    <div class="d-d-flex justify-content-center">
        <input type="text"  placeholder="Add a Task"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask(id)"/>
-      <button class="btn rounded-0" @click="submitTask(id)">SUBMIT</button>
+      <button class="btn btn-dark" @click="submitTask(id)">SUBMIT</button>
       <br />
     </div>
-
+     <!-- <button class="btn btn-dark" @click="deleteChecklist">Delete Checklist</button> -->
 
     <!-- List Tasks-->
     <table class="table table-bordered mt-5">
@@ -83,6 +83,7 @@ export default {
      this.$emit("submitTask",this.id );
       
       },
+
     removeTask() {
     
      this.$emit("removeTask",this.id );
@@ -93,6 +94,10 @@ export default {
      this.$emit("taskStatus",this.id );
       
       },
+     deleteChecklist() {
+     this.$emit("deleteChecklist",this.id );
+     }
+     
   },
   
 };
