@@ -1,4 +1,5 @@
 <template>
+<div :class="{isDarkmode:darkmode}">
   <!-- <createTL :newCategory="newCategory" :categories="categories" /> 
   <boxTL v-for="category in categories" 
     :id="category.id" 
@@ -16,8 +17,8 @@
         </center>
 
     </div> 
-
- 
+    
+    <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
 
   <!-- BoxTL component / assign Parameters-->    
    <boxTL v-for="categorie in categories "  :key="categorie.id"
@@ -27,8 +28,9 @@
   :tasks="tasks" @submitTask="submitTask"  
   @removeTask="removeTask(tasks.id)"
   v-model="categorie.newTask"
+  
   @update:modelValue="categorie.newCategory = $event"/>
-
+  </div>
 </template>
 
 
@@ -54,6 +56,7 @@ export default {
       newCategory: "",  
       newTL:"",
       searchTerm: "",
+      darkmode: false
 
 
         //nicht verwendet
@@ -110,7 +113,8 @@ export default {
       const res = await axios.post(`http://localhost:3000/tasks`, {
         id: new_id,
         taskName: this.categories[index].newTask ,
-        categoryId: id
+        categoryId: id,
+        status: false
       });
       this.categories[index].newTask = "";
       this.tasks = [...this.tasks, res.data];
@@ -222,4 +226,17 @@ export default {
 </script> 
 
 <style>
+
+
+.isDarkmode * {
+  background-color: rgb(42, 42, 42);
+    color: white;
+    
+}
+tbody *{
+  text-align: left;
+}
+.isChecked{ 
+  text-decoration: line-through
+}
 </style>

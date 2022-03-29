@@ -16,7 +16,7 @@
       "id": 3
     },
     {
-      "categoryName": "Uran stinkt",
+      "categoryName": "testTL",
       "newTask": "",
       "id": 4
     }
@@ -93,23 +93,27 @@
       "id": 14
     },
     {
-      "taskName": "wieso stinkt uran?",
+      "taskName": "test1",
       "categoryId": 4,
+      "status": false,
       "id": 15
     },
     {
-      "taskName": "krebs?",
+      "taskName": "asdf",
       "categoryId": 4,
+      "status": false,
       "id": 16
     },
     {
-      "taskName": "Aids?",
-      "categoryId": 4,
+      "taskName": "asdf",
+      "categoryId": 1,
+      "status": false,
       "id": 17
     },
     {
-      "taskName": "idk",
+      "taskName": "kmj",
       "categoryId": 4,
+      "status": false,
       "id": 18
     }
   ]

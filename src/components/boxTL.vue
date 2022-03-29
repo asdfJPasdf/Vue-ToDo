@@ -1,5 +1,6 @@
 <template>
   <div class="container p-3 my-3 border">
+
     <!-- Title-->
     <h3>{{ categoryName }}</h3>
     <!--New Task Input-->
@@ -25,10 +26,10 @@
         <tr  v-if="task.categoryId == id">
 
           <td>
-             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  v-model="task.status">
           </td>
-          <td>
-            {{ task.taskName }}
+          <td >
+            <h5 :class="{isChecked:task.status }"> {{ task.taskName }}</h5>
           </td>
   
   
@@ -49,6 +50,8 @@
       </tbody>
     </table>
   </div>
+  
+  
 
   
 </template>
@@ -90,7 +93,6 @@ export default {
 };
 </script>
 <style scoped>
-tbody{
-  text-align: left;
-}
+
+
 </style> 
