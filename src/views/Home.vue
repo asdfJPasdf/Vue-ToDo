@@ -53,6 +53,7 @@ export default {
       tasks:[],
       newCategory: "",  
       newTL:"",
+      searchTerm: "",
 
 
         //nicht verwendet
@@ -179,6 +180,33 @@ export default {
       
 
   },
+  computed: {
+  filtered_students() {
+
+			if (this.search_text) {
+
+				// Return a filtered array
+				return this.tasks.filter(task => {
+					
+					// Set filter by check every word of search text
+					return this.searchTerm
+							.toLowerCase()
+							.split(' ')
+							.every(word => {
+								return 	task.taskName.toLowerCase().includes(word)
+										|| 
+										task.done.toString().includes(word)
+										|| 
+										task.categoryName.toString().toLowerCase().includes(word)
+							});
+				});
+
+			}
+			else {
+				return this.tasks;
+			}
+		
+		},
    /*async addItem() {
       const res = await axios.post(`http://localhost:3000/todos`, {
         name: this.newTask,
@@ -188,6 +216,7 @@ export default {
     },*/
 
   
+}
 }
 
 </script> 

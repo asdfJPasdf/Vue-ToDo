@@ -14,6 +14,11 @@
       "categoryName": "Fragen?",
       "newTask": "",
       "id": 3
+    },
+    {
+      "categoryName": "Uran stinkt",
+      "newTask": "",
+      "id": 4
     }
   ],
   "tasks": [
@@ -86,6 +91,26 @@
       "taskName": "problem mit ids beim löschen",
       "categoryId": 3,
       "id": 14
+    },
+    {
+      "taskName": "wieso stinkt uran?",
+      "categoryId": 4,
+      "id": 15
+    },
+    {
+      "taskName": "krebs?",
+      "categoryId": 4,
+      "id": 16
+    },
+    {
+      "taskName": "Aids?",
+      "categoryId": 4,
+      "id": 17
+    },
+    {
+      "taskName": "idk",
+      "categoryId": 4,
+      "id": 18
     }
   ]
 }
