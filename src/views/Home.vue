@@ -1,4 +1,5 @@
 <template>
+<div :class="{isDarkmode:darkmode}">
   <!-- <createTL :newCategory="newCategory" :categories="categories" /> 
   <boxTL v-for="category in categories" 
     :id="category.id" 
@@ -16,8 +17,8 @@
         </center>
 
     </div> 
-
- 
+    
+    <button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> 
 
   <!-- BoxTL component / assign Parameters-->    
    <boxTL v-for="categorie in categories "  :key="categorie.id"
@@ -29,7 +30,7 @@
   v-model="categorie.newTask"
   
   @update:modelValue="categorie.newCategory = $event"/>
-
+  </div>
 </template>
 
 
@@ -54,6 +55,7 @@ export default {
       tasks:[],
       newCategory: "",  
       newTL:"",
+      darkmode: false
 
 
         //nicht verwendet
@@ -195,7 +197,17 @@ export default {
 </script> 
 
 <style>
-.checked active{
-  text-decoration:line-through; 
+
+
+.isDarkmode * {
+  background-color: rgb(42, 42, 42);
+    color: white;
+    
+}
+tbody *{
+  text-align: left;
+}
+.isChecked{ 
+  text-decoration: line-through
 }
 </style>

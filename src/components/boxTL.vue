@@ -1,5 +1,6 @@
 <template>
   <div class="container p-3 my-3 border">
+
     <!-- Title-->
     <h3>{{ categoryName }}</h3>
     <!--New Task Input-->
@@ -49,6 +50,8 @@
       </tbody>
     </table>
   </div>
+  
+  
 
   
 </template>
@@ -90,9 +93,6 @@ export default {
 };
 </script>
 <style scoped>
-tbody{
-  text-align: left;
-}
-.isChecked{ text-decoration: line-through
-}
+
+
 </style> 
