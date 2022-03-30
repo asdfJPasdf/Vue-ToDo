@@ -1,6 +1,8 @@
 <template>
   <div class="container p-3 my-3 border">
-
+  <div style="float:right;">
+             <button @click="deleteCategorie(categorie.id)"><i class="bi bi-trash-fill"></i></button>  
+            </div>
     <!-- Title-->
     <h3>{{ categoryName }}</h3>
     <!--New Task Input-->
@@ -9,7 +11,7 @@
        <input type="text"  placeholder="Add a Task"  :value="modelValue" @input="(event) => $emit('update:modelValue', event.target.value)" @keyup.enter="submitTask(id)"/>
       <button class="btn btn-dark" @click="submitTask(id)">SUBMIT</button>
       <br />
-    </div>
+    </div >
      <!-- <button class="btn btn-dark" @click="deleteChecklist">Delete Checklist</button> -->
 
     <!-- List Tasks-->
@@ -26,7 +28,7 @@
         <tr  v-if="task.categoryId == id">
 
           <td>
-             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @click="taskStatus(this.id)" v-model="task.status">
+             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @click="taskStatus(task.id)" v-model="task.status">
           </td>
           <td >
             <h5 :class="{isChecked:task.status }" > {{ task.taskName }}</h5>
@@ -42,7 +44,7 @@
           
           <td>
             <div class="text-center">
-             <button v-on:click="removeTask(id)"><i class="bi bi-trash-fill"></i></button>  <!--Darkmode : <i class="bi bi-trash"></i>-->
+             <button @click="removeTask(task.id)"><i class="bi bi-trash-fill"></i></button>  <!--Darkmode : <i class="bi bi-trash"></i>-->
             </div>
           </td>
          
@@ -84,18 +86,18 @@ export default {
       
       },
 
-    removeTask() {
+    removeTask(id) {
     
-     this.$emit("removeTask",this.id );
+     this.$emit("removeTask",id );
       
       },
-    taskStatus() {
+    taskStatus(id) {
     
-     this.$emit("taskStatus",this.id );
+     this.$emit("taskStatus",id );
       
       },
-     deleteChecklist() {
-     this.$emit("deleteChecklist",this.id );
+     deleteCategorie(id) {
+     this.$emit("deleteCategorie",id );
      }
      
   },

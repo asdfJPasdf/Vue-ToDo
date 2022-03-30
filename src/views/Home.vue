@@ -1,5 +1,5 @@
 <template >
-<div :class="{isDarkmode:darkmode}">
+<!--<div :class="{isDarkmode:darkmode}">-->
   <!-- <createTL :newCategory="newCategory" :categories="categories" /> 
   <boxTL v-for="category in categories" 
     :id="category.id" 
@@ -10,6 +10,11 @@
   /> -->
   <!--new TL-->
 <h1>Vue-ToDo</h1>
+<div style="position:absolute; top:0px; right:0px;" >
+       <input type="text" placeholder="Search Categorie..." class="form-control-sm" v-model="searchTerm" >
+        <!--<button button class="btn btn-dark" @click="searchTask">search</button> -->
+        <br> 
+    </div> 
 
    <div class= "d-flex justify-content-center" style="position:absolute top:5px" >
      <center>        <input type="text" placeholder="Add new Tasklist" class="form-control-sm" v-model="newCategory"  @keyup.enter="submitCategories">
@@ -18,30 +23,30 @@
         </center>
 
     </div> 
-    <div class= "position-absolute top-1 end-0" >
-       <input type="text" placeholder="Search Categorie..." class="form-control-sm" v-model="searchTerm" >
-        <!--<button button class="btn btn-dark" @click="searchTask">search</button> -->
-        <br> 
-    </div> 
-
+    
     <!--<button button class="btn btn-dark" @click="darkmode = !darkmode">{{darkmode ? "Lightmode" : "Darkmode"}}</button> -->
 
   <!-- BoxTL component / assign Parameters-->    
   
- 
-   <boxTL v-for="categorie in categories "  :key="categorie.id"
-  :id="categorie.id"
-  :newCategory="newCategory" 
-  :categoryName="categorie.categoryName" 
-  :tasks="tasks" 
-  @submitTask="submitTask"  
-  @removeTask="removeTask(tasks.id)"
-  v-model="categorie.newTask"
-  @deleteChecklist="deleteChecklist"
-  @taskStatus="taskStatus"
-  @update:modelValue="categorie.newCategory = $event"/>
+
+
+ <div  v-if="filtered_Categorie.length">
+    <boxTL v-for="categorie in filtered_Categorie "  :key="categorie.id"
+    :id="categorie.id"
+    :newCategory="newCategory" 
+    :categoryName="categorie.categoryName" 
+    :tasks="tasks" 
+    @submitTask="submitTask"  
+    @removeTask="removeTask"
+    v-model="categorie.newTask"
+    @taskStatus="taskStatus"
+    @deleteCategorie="deleteCategorie"
+    @update:modelValue="categorie.newCategory = $event"/>
   </div>
-   
+   <p v-else class="mt-2">
+			It doesn't exist a categorie with this name
+		</p>
+
 
   
 </template>
@@ -184,14 +189,11 @@ export default {
     //       categories: res.categories
 
     //  }}
-    /*   async taskStatus(id) {
-         console.log(typeof this.tasks)
-   console.log(this.tasks[1]["id"])
-   console.log(this.tasks[id])
-console.log(this.tasks[id].status);
-console.log(this.tasks[id].taskName);
+       async taskStatus(id) {
+    
+
   try {
-    if(this.tasks[id].status){ 
+    if(this.tasks.find(element =>element.id =id).status){ 
         await axios.patch(`${`http://localhost:3000/tasks`}/${id}`, {
             status: false
         });
@@ -213,11 +215,13 @@ console.log(this.tasks[id].taskName);
             return task;
         });
     } 
+    
   }
     catch (error) {
         console.error(error);
     }
-},*/
+    
+},
 
 
    // removeTask(id) {
@@ -236,6 +240,16 @@ console.log(this.tasks[id].taskName);
       this.tasklists = [...this.tasklists, res.data];
       this.newTL = "";
    },*/
+   async removeTask(id){
+   axios.delete(`http://localhost:3000/tasks/${id}`);
+    this.tasks = this.tasks.filter(tasks => tasks.id !== id);
+    
+   },
+   async deleteCategorie(id){
+   axios.delete(`http://localhost:3000/categorie/${id}`);
+    this.categories = this.categories.filter(categories => categories.id !== id);
+    
+   }
 
       
       
@@ -246,10 +260,9 @@ console.log(this.tasks[id].taskName);
 
 			if (this.searchTerm) {
 
-				// Return a filtered array
 				return this.categories.filter(categorie => {
 					
-					// Set filter by check every word of search text
+					
 					return this.searchTerm
 							.toLowerCase()
 							.split(' ')
@@ -262,7 +275,7 @@ console.log(this.tasks[id].taskName);
 
 			}
 		else {
-				return this.categorie
+				return this.categories
 			}
 		},
   }

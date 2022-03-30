@@ -19,56 +19,25 @@
       "categoryName": "testTL",
       "newTask": "",
       "id": 4
+    },
+    {
+      "categoryName": "Lionel",
+      "newTask": "",
+      "id": 5
     }
   ],
   "tasks": [
     {
-      "taskName": "status attribut implemetirenn",
-      "categoryId": 1,
-      "id": 1,
-      "status": false
-    },
-    {
-      "taskName": "edit implementieren",
-      "categoryId": 1,
-      "id": 2,
-      "status": true
-    },
-    {
-      "taskName": "delet implemetiren",
-      "categoryId": 1,
-      "id": 3,
-      "status": false
-    },
-    {
-      "taskName": "darkmode",
-      "categoryId": 1,
-      "id": 4,
-      "status": true
-    },
-    {
-      "taskName": "search beenden",
-      "categoryId": 1,
-      "id": 5,
-      "status": false
-    },
-    {
-      "taskName": "search kategories",
-      "categoryId": 2,
-      "id": 6,
-      "status": false
-    },
-    {
       "taskName": "search task",
       "categoryId": 2,
       "id": 7,
-      "status": false
+      "status": true
     },
     {
       "taskName": "search status",
       "categoryId": 2,
       "id": 8,
-      "status": false
+      "status": true
     },
     {
       "taskName": "Wieso sind in der ersten checkbox dicke schwarze linen",
@@ -86,13 +55,13 @@
       "taskName": "Mock up stimmt nicht so ganz mit app über ein was tun?",
       "categoryId": 3,
       "id": 11,
-      "status": true
+      "status": false
     },
     {
       "taskName": "Sie funktioniert es nur das erste elemet zu löschen ",
       "categoryId": 3,
       "id": 12,
-      "status": true
+      "status": false
     },
     {
       "taskName": "ersten 3 es hat keine Reienfolge",
@@ -119,28 +88,22 @@
       "id": 16
     },
     {
-      "taskName": "asdf",
+      "taskName": "die ",
       "categoryId": 1,
       "status": false,
-      "id": 17
+      "id": 21
     },
     {
-      "taskName": "kmj",
-      "categoryId": 4,
-      "status": false,
-      "id": 18
-    },
-    {
-      "taskName": "ff",
+      "taskName": "checkbox",
       "categoryId": 1,
       "status": false,
-      "id": 19
+      "id": 22
     },
     {
-      "taskName": "dd",
-      "categoryId": 1,
+      "taskName": "Wiä geits lionel",
+      "categoryId": 5,
       "status": false,
-      "id": 20
+      "id": 23
     }
   ]
 }

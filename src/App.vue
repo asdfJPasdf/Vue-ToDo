@@ -1,10 +1,8 @@
 <template>
-  <div id="nav" style="position:absolute; top:0px; right:80px;">
+  <div id="nav" style="position:absolute; top:-25px; left:-20px;">
     <router-link to="/">Home</router-link> |
      <i class="bi bi-search"></i>
     <router-link to="/tasks">Tasks</router-link> |
-   <!-- <i class="bi bi-search"></i> 
-    <router-link to="/categorie">Categorie</router-link>-->
    
   </div>
   <router-view/>
@@ -13,6 +11,8 @@
 <script>
 import Darkmode from 'darkmode-js';
 new Darkmode().showWidget();
+
+
 export default {
  
     
@@ -39,6 +39,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #f29102;
 }
 </style>
